@@ -1,0 +1,10 @@
+app:
+  build: ./app
+  container_name: "app"
+  command: python3 -u app.py
+  ports:
+    - "443:443"
+  volumes:
+    - ./app:/app
+  tty: true
+  restart: unless-stopped

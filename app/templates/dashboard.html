@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="ui three column centered grid">
+    <div class="column">
+        <form action="/" class="ui form segment" method="POST">
+            <div class="field">
+                <label for="term">Search term</label>
+                <input placeholder="Physical therapy" type="text" name="term" value="{{term}}">
+            </div>
+            <div class="field">
+                <label for="location">Location</label>
+                <input placeholder="Phoenix, AZ" type="text" name="location" value="{{loc}}">
+            </div>
+            <div class="field">
+                <label for="radius">Radius</label>
+                <select class="ui fluid search dropdown" name="radius">
+                        <option value="8000">10 miles</option>
+                        <option value="16000">20 miles</option>
+                        <option value="40000">50 miles</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="num">Max number of results</label>
+                <select class="ui search dropdown" name="num">
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                </select>
+            </div>
+            <br>
+            <div class="ui two column centered grid">
+                <div class="column">
+                    <button class="ui fluid submit button" type="submit" name="submit" value = "search">Search</button>
+                </div>
+                <div class="column">
+                    <button class="ui fluid submit button" type="submit" name="submit" value = "csv">Export CSV</button>
+                </div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+    </div>
+</div>
+
+<br>
+<div class="ui container">
+    <div>
+        <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Business Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in _businesses %}
+                    <tr>
+                        <td><a href="{{i['url']}}">{{i['name']}}</a></td>
+                        <td>{{i['location']['display_address']}}</td>
+                        <td>{{i['display_phone']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</div>
+{% endblock %}
+
+{%block scripts %}
+<!--Don't let users enter empty fields-->
+<script>
+    $('.ui.form')
+    .form({
+        fields: {
+            term: {
+                identifier: 'term',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: 'Please enter a search term.'
+                    }
+                ]
+            },
+            location: {
+                identifier: 'location',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: 'Please enter a location.'
+                    }
+                ]
+            },
+        }
+    });
+</script>
+
+
+
+<script src="/static/framework/components/visibility.js"></script>
+<script src="/static/framework/components/sidebar.js"></script>
+<script src="/static/framework/components/transition.js"></script>
+{% endblock %}

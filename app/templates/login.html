@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <!--Import semantic -->
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css" media="screen,projection" />
+    <!--Import material-icons.css-->
+    <link type="text/css" rel="stylesheet" href="/static/framework/components/login.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/material-icons.css" />
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - YelpCSV</title>
+    <script src="/static/framework/components/form.js"></script>
+    <script src="/static/framework/components/transition.js"></script>
+    <script src="/static/framework/components/login.js"></script>
+    <script>
+    </script>
+     {% endblock %}
+</head>
+
+<body><div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <div class="ui huge header" style="color: white;">
+	YelpCSV
+        </div>
+        <form class="ui large form" method="post" action="login">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" placeholder="Username">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <input class="ui fluid large green submit button" type='submit' name='submit' value="Login" />
+            </div>
+
+            <div class="ui error message"></div>
+
+        </form>
+    </div>
+</div> {% block scripts %} {% endblock %}
+</body>
+
+</html>
