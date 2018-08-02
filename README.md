@@ -1,5 +1,5 @@
 ## How to use
-1. Replace the AUTH string in app/parser.py with your own Yelp API key
+1. Replace the AUTH string in *`app/parser.py`* with your own Yelp API key
 
 2. If you want to use https, add your key and cert into the keys directory
     - You'll also have to modify the "cert authority secret link" function in *`app/app.py`*
