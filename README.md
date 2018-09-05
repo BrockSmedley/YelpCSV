@@ -6,3 +6,5 @@
     - If you don't want https, comment out the SSL context stuff (lines 10-17) in *`app/app.py`*, remove **`ssl_context`** from the **`app.run(...)`** call in *`app/app.py`*, and you might also change the ports in that function and the `docker-compose.yml` file (to 80 or whatever)
 
 3. `docker-compose up`
+
+![screenshot](screenshot.png)
